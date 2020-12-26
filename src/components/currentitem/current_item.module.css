@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap");
+
+.currentitem {
+  background-color: whitesmoke;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.text {
+  font-size: 2em;
+  padding-top: 1em;
+  font-family: "Sunflower", sans-serif;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

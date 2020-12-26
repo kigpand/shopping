@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap");
+
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tag {
+  width:100vw;
+  height: 100vh;
+  background-color: whitesmoke;
+  background-image: url("/src/img/home.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tag_second {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 50em;
+  background-color: white;
+}
+
+.text {
+  font-size: 1.5em;
+  font-family: "Sunflower", sans-serif;
+}
+
+.adv {
+  width: 50%;
+  margin-top: 3em;
+}
