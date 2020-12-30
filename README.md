@@ -5,7 +5,7 @@
 ### 기능 
 
 <img src ="https://user-images.githubusercontent.com/70279943/103325229-34686380-4a8e-11eb-956a-22e180df428e.PNG" width = "300px" /> 
->* #### 구글 로그인 기능
+#### 구글 로그인 기능
 >* #### 로그인통한 게시글 작성 기능
 
 
