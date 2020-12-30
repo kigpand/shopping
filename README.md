@@ -17,11 +17,13 @@
 
 
 <img src ="https://user-images.githubusercontent.com/70279943/103325236-3b8f7180-4a8e-11eb-9a7c-e8bfd69d9973.PNG" width = "300px">
+
 >* #### 최근 게시물 8개 까지 생성 후 메인에 등록
 
 
 
 
 <img src ="https://user-images.githubusercontent.com/70279943/103325279-6a0d4c80-4a8e-11eb-8293-717b11a45918.PNG" width = "300px">
+
 >* #### 검색어를 통한 검색기능
 
