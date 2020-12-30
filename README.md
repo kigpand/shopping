@@ -20,8 +20,8 @@
 #
 <img src ="https://user-images.githubusercontent.com/70279943/103325279-6a0d4c80-4a8e-11eb-8293-717b11a45918.PNG" width = "300px"> 
 
->* 검색 기능 구현
-
+>* #### 검색 기능 구현
+#
 ### Tech
 >* React(React Hook) 기반
 >* React-Router 사용
