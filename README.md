@@ -29,7 +29,7 @@ DeleteContents(content_num){
         const base = firebaseApp.database();
         const ref = base.ref(`lists/`);
         ref.on('value', snapshop => {
-            if(snapshop.val()){
+            if(snapshop.val()){ // firebase에서 받아온 snapshop이 존재할 경우 가져온 content_num과 snapshot안의 오브젝트들의 content_num과 비교해 같은 번호를 가진 오브젝트 삭제
                 for(let i = 0; i<Object.values(snapshop.val()).length;i++){
                     if(Object.values(snapshop.val())[i].content_num === content_num){
                         firebaseApp.database().ref(`lists/${Object.keys(snapshop.val())[i]}`).remove().then(()=>{
@@ -64,7 +64,7 @@ ___
             ref.on('value', snapshop => {
                 if(snapshop.val()){
                     for(let i = 0; i<Object.values(snapshop.val()).length;i++){
-                        if(Object.values(snapshop.val())[i].title.includes(searchData)){
+                        if(Object.values(snapshop.val())[i].title.includes(searchData)){  //제목 searchData를 포함하는 오브젝트를 array에 저장후 
                             array.push(Object.values(snapshop.val())[i]);
                         }
                     }
