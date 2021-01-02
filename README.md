@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+## 간단한 중고거래 사이트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src = "https://user-images.githubusercontent.com/70279943/103325323-afca1500-4a8e-11eb-92eb-4d02e7d64120.PNG" width = "500px"> 
 
-## Available Scripts
+### 기능 
+<img src ="https://user-images.githubusercontent.com/70279943/103325229-34686380-4a8e-11eb-956a-22e180df428e.PNG" width = "300px" /> 
 
-In the project directory, you can run:
+* 구글을 통한 로그인 기능(Firebase 제공 API 활용)
 
-### `yarn start`
+```js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    pushData(id,nickName,title,imgUrl,info,price,address){
+        const base = firebaseApp.database();
+        base.ref('lists/').push({
+            content_num : Date.now(),
+            user_id : id,
+            nickName : nickName,
+            title : title,
+            imgUrl : imgUrl,
+            info : info,
+            price: price,
+            address : address
+        }).then(alert("게시글 등록이 완료되었습니다"));
+    }
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```js
+DeleteContents(content_num){
+        const base = firebaseApp.database();
+        const ref = base.ref(`lists/`);
+        ref.on('value', snapshop => {
+            if(snapshop.val()){
+                for(let i = 0; i<Object.values(snapshop.val()).length;i++){
+                    if(Object.values(snapshop.val())[i].content_num === content_num){
+                        firebaseApp.database().ref(`lists/${Object.keys(snapshop.val())[i]}`).remove().then(()=>{
+                            alert("게시글이 삭제되었습니다");
+                            window.location.href = "/";
+                        });
+                    }
+                }
+            }
+        });
+    }
+```
+* 로그인 확인시 게시글 작성, 삭제 가능
 
-### `yarn test`
+___
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src ="https://user-images.githubusercontent.com/70279943/103325235-39c5ae00-4a8e-11eb-80cc-bf2946c6e348.PNG" width = "300px">
 
-### `yarn build`
+*  게시글 작성 중 이미지 업로딩 할 경우 업로딩 되는 동안 로딩 스피너 구현 
+___
+<img src ="https://user-images.githubusercontent.com/70279943/103325236-3b8f7180-4a8e-11eb-9a7c-e8bfd69d9973.PNG" width = "300px"> 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* 최근 등록된 8개의 게시물 메인 홈페이지 게시
+___
+<img src ="https://user-images.githubusercontent.com/70279943/103325279-6a0d4c80-4a8e-11eb-8293-717b11a45918.PNG" width = "300px"> 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```js
+    SearchContents(searchData){
+            const base = firebaseApp.database();
+            const ref = base.ref('lists/');
+            const array = [];
+            ref.on('value', snapshop => {
+                if(snapshop.val()){
+                    for(let i = 0; i<Object.values(snapshop.val()).length;i++){
+                        if(Object.values(snapshop.val())[i].title.includes(searchData)){
+                            array.push(Object.values(snapshop.val())[i]);
+                        }
+                    }
+                }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+            });
+            return array;
+        }
+```
 
-### `yarn eject`
+* 검색 기능 구현
+___
+### Tech
+>* React(React Hook) 기반
+>* React-Router 사용
+>* Firebase Login, RealTime DB 기능 사용
+>* Cloudynary를 통한 이미지 업로딩 기능 구현
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
