@@ -56,6 +56,25 @@ ___
 ___
 <img src ="https://user-images.githubusercontent.com/70279943/103325279-6a0d4c80-4a8e-11eb-8293-717b11a45918.PNG" width = "300px"> 
 
+```js
+    SearchContents(searchData){
+            const base = firebaseApp.database();
+            const ref = base.ref('lists/');
+            const array = [];
+            ref.on('value', snapshop => {
+                if(snapshop.val()){
+                    for(let i = 0; i<Object.values(snapshop.val()).length;i++){
+                        if(Object.values(snapshop.val())[i].title.includes(searchData)){
+                            array.push(Object.values(snapshop.val())[i]);
+                        }
+                    }
+                }
+
+            });
+            return array;
+        }
+```
+
 * 검색 기능 구현
 ___
 ### Tech
