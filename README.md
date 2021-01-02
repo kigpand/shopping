@@ -6,28 +6,7 @@
 <img src ="https://user-images.githubusercontent.com/70279943/103325229-34686380-4a8e-11eb-956a-22e180df428e.PNG" width = "300px" /> 
 
 * 구글을 통한 로그인 기능(Firebase 제공 API 활용)
-```js
-const pushClick = () =>{
-        if(!titleRef.current.value || !infoRef.current.value || !priceRef.current.value || !addressRef.current.value){
-            alert("내용을 채워주세요!");
-            return;
-        }
-        else{
-            const title = titleRef.current.value;
-            const imgUrl = uploadUrl;
-            const info = infoRef.current.value;
-            const price = priceRef.current.value;
-            const address = addressRef.current.value;
 
-            shopService.pushData(id,nickName,title,imgUrl,info,price,address);
-            titleRef.current.value = "";
-            infoRef.current.value = "";
-            priceRef.current.value = "";
-            addressRef.current.value = "";
-            history.push('/');
-        }
-    }
-```
 ```js
 
     pushData(id,nickName,title,imgUrl,info,price,address){
@@ -42,6 +21,25 @@ const pushClick = () =>{
             price: price,
             address : address
         }).then(alert("게시글 등록이 완료되었습니다"));
+    }
+```
+
+```js
+DeleteContents(content_num){
+        const base = firebaseApp.database();
+        const ref = base.ref(`lists/`);
+        ref.on('value', snapshop => {
+            if(snapshop.val()){
+                for(let i = 0; i<Object.values(snapshop.val()).length;i++){
+                    if(Object.values(snapshop.val())[i].content_num === content_num){
+                        firebaseApp.database().ref(`lists/${Object.keys(snapshop.val())[i]}`).remove().then(()=>{
+                            alert("게시글이 삭제되었습니다");
+                            window.location.href = "/";
+                        });
+                    }
+                }
+            }
+        });
     }
 ```
 * 로그인 확인시 게시글 작성, 삭제 가능
