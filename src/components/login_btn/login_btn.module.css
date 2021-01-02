@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap");
 
 .btn {
-  padding: 0.5em;
   border: 1px solid lightgray;
   border-radius: 4px;
   cursor: pointer;
-  margin: 0.5em;
+  padding: 0.5rem;
+  margin: 0.5em 0 0 10rem;
   font-size: 1em;
   font-family: "Sunflower", sans-serif;
 }

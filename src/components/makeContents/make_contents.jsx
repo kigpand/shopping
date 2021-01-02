@@ -2,8 +2,9 @@ import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ImgUpload from '../../service/img_upload';
 import styles from './make_contents.module.css';
+import NOIMG from '../../img/no_img.png';
 
-const MakeContents = ({id, nickName,authService}) => {
+const MakeContents = ({id, nickName, shopService}) => {
 
     const history = useHistory();
     const titleRef = useRef();
@@ -11,7 +12,7 @@ const MakeContents = ({id, nickName,authService}) => {
     const priceRef = useRef();
     const addressRef = useRef();
 
-    const [uploadUrl,setUploadUrl] = useState("/img/no_img.png");
+    const [uploadUrl,setUploadUrl] = useState(NOIMG);
     const [loading,setLoading] = useState(false);
     const imgUpload = new ImgUpload();
 
@@ -35,7 +36,7 @@ const MakeContents = ({id, nickName,authService}) => {
             const price = priceRef.current.value;
             const address = addressRef.current.value;
 
-            authService.pushData(id,nickName,title,imgUrl,info,price,address);
+            shopService.pushData(id,nickName,title,imgUrl,info,price,address);
             titleRef.current.value = "";
             infoRef.current.value = "";
             priceRef.current.value = "";

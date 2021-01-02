@@ -2,11 +2,11 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './view_content.module.css';
 
-const ViewContent = ({authService,id}) => {
+const ViewContent = ({id,shopService}) => {
     const location = useLocation();
 
     const deleteItem =() =>{
-        authService.DeleteContents(location.state.content.content_num);
+        shopService.DeleteContents(location.state.content.content_num);
     }
 
     return(

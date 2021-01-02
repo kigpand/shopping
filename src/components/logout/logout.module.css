@@ -12,8 +12,8 @@
   position: relative;
   top:0.5em;
   font-size:0.5em;
-  margin-right: 1em;
-  padding: 0.5em;
+  margin-right: 1rem;
+  padding: 0.5rem;
   border : 1px solid black;
   border-radius: 4px;
   cursor: pointer;
@@ -22,4 +22,25 @@
 
 .btn:hover {
   transform: scale(1.1);
+}
+
+
+@media all and (max-width:767px) {
+
+  .text{
+    visibility: hidden;
+  }
+
+  .logout{
+    font-size: 0.1rem;
+    width:10rem;
+    margin-left: 0;
+  }
+
+  .btn{
+    width:50%;
+    margin: 0;
+    font-size:0.5rem;
+    padding: 0.1rem;
+  }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import CurrentItem from '../currentitem/current_item';
 import styles from './home.module.css';
 
-const Home = ({authService}) => {
+const Home = ({shopService}) => {
 
     return(
         <div>
@@ -10,7 +10,7 @@ const Home = ({authService}) => {
                 <div className = {styles.tag}>
                 </div>
             </div>
-            <CurrentItem authService = {authService}/>
+            <CurrentItem shopService = {shopService}/>
         </div>
     );
 };

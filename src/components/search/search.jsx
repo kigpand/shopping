@@ -2,36 +2,36 @@ import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './search.module.css';
 
-const Search = ({authService}) => {
+const Search = ({shopService, setSearchData, setArray}) => {
+    const inputRef = useRef()
     const history = useHistory();
-    const inputRef = useRef();
 
     const Click = ()=>{
         if(inputRef.current.value===""){
+            setSearchData(false);
             return;
         }
         else{
-            const array = authService.SearchContents(inputRef.current.value);
-            history.push({
-                pathname : '/contents',
-                state : {array : array}
-            });
+            const array = shopService.SearchContents(inputRef.current.value);
+            setArray(array);
+            setSearchData(true);
             inputRef.current.value = "";
+            history.push("/");
         }
     }
 
     const EnterKeyDown = () =>{
         if(window.event.keyCode === 13){
             if(inputRef.current.value===""){
+                setSearchData(false);
                 return;
             }
             else{
-                const array = authService.SearchContents(inputRef.current.value);
-                history.push({
-                    pathname : '/contents',
-                    state : {array : array}
-                });
+                const array = shopService.SearchContents(inputRef.current.value);
+                setArray(array);
+                setSearchData(true);
                 inputRef.current.value = "";
+                history.push("/");
             }
         }
     }

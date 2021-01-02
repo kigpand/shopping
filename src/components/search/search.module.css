@@ -22,3 +22,13 @@
   outline: none;
   cursor: pointer;
 }
+
+
+@media all and (max-width:767px) {
+  .input{
+    width:100%;
+  }
+  .text{
+    width:100%;
+  }
+}

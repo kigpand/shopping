@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Item from '../item/item';
 import styles from './current_item.module.css';
 
-const CurrentItem = ({authService}) => {
+const CurrentItem = ({shopService}) => {
 
     const [contents,setContent] = useState({});
 
     useEffect(() =>{
-        const stopSync = authService.makeCurrentContents(datas =>{
+        const stopSync = shopService.makeCurrentContents(datas =>{
             setContent(datas);
         });
         return () =>{ stopSync();}

@@ -89,3 +89,31 @@
     transform: rotate(360deg);
   }
 }
+
+@media all and (max-width:767px) {
+
+  .sub{
+    font-size: 1rem;
+  }
+
+  .info{
+    height: 50%;
+  }
+
+  .bg{
+    width: 90%;
+  }
+
+  .btns{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pushbtn,
+  .canclebtn{
+    width:30%;
+    height: auto;
+    font-size:1rem;
+  }
+}
