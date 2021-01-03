@@ -9,6 +9,7 @@ ___
 * 로그인 확인시 게시글 작성, 삭제 가능
 
 <img src ="https://user-images.githubusercontent.com/70279943/103325229-34686380-4a8e-11eb-956a-22e180df428e.PNG" width = "300px" /> 
+
 ```js
 
     pushData(id,nickName,title,imgUrl,info,price,address){
