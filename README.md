@@ -29,9 +29,9 @@ DeleteContents(content_num){
         const base = firebaseApp.database();
         const ref = base.ref(`lists/`);
         ref.on('value', snapshop => {
-            if(snapshop.val()){ // firebase에서 받아온 snapshop이 존재할 경우 가져온 content_num과 snapshot안의 오브젝트들의 content_num과 비교해 같은 번호를 가진 오브젝트 삭제
+            if(snapshop.val()){ // firebase에서 받아온 데이터 값
                 for(let i = 0; i<Object.values(snapshop.val()).length;i++){
-                    if(Object.values(snapshop.val())[i].content_num === content_num){
+                    if(Object.values(snapshop.val())[i].content_num === content_num){ //받아온 데이터 값의 content_num이 삭제할 content_num과 같을경우 삭제
                         firebaseApp.database().ref(`lists/${Object.keys(snapshop.val())[i]}`).remove().then(()=>{
                             alert("게시글이 삭제되었습니다");
                             window.location.href = "/";
@@ -64,7 +64,7 @@ ___
             ref.on('value', snapshop => {
                 if(snapshop.val()){
                     for(let i = 0; i<Object.values(snapshop.val()).length;i++){
-                        if(Object.values(snapshop.val())[i].title.includes(searchData)){  //제목 searchData를 포함하는 오브젝트를 array에 저장후 
+                        if(Object.values(snapshop.val())[i].title.includes(searchData)){  //title에 searchData를 포함하는 오브젝트를 array에 저장
                             array.push(Object.values(snapshop.val())[i]);
                         }
                     }
