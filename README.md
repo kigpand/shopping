@@ -3,12 +3,12 @@
 <img src = "https://user-images.githubusercontent.com/70279943/103325323-afca1500-4a8e-11eb-92eb-4d02e7d64120.PNG" width = "500px"> 
 
 ### 기능 
-<img src ="https://user-images.githubusercontent.com/70279943/103325229-34686380-4a8e-11eb-956a-22e180df428e.PNG" width = "300px" /> 
 
 * 구글을 통한 로그인 기능(Firebase 제공 API 활용)
 ___
 * 로그인 확인시 게시글 작성, 삭제 가능
 
+<img src ="https://user-images.githubusercontent.com/70279943/103325229-34686380-4a8e-11eb-956a-22e180df428e.PNG" width = "300px" /> 
 ```js
 
     pushData(id,nickName,title,imgUrl,info,price,address){
