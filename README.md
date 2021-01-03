@@ -53,6 +53,7 @@ ___
 ___
 * 최근 등록된 8개의 게시물 메인 홈페이지 게시
 <img src ="https://user-images.githubusercontent.com/70279943/103325236-3b8f7180-4a8e-11eb-9a7c-e8bfd69d9973.PNG" width = "300px"> 
+
 ```js
 {Object.keys(contents).reverse().map(key =>{
                     if(key>Object.keys(contents).length-9){
