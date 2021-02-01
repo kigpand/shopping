@@ -16,9 +16,9 @@ const ViewContent = ({id,shopService}) => {
 
     return(
           <div className = {styles.viewContent}>
-              <div className = {styles.title}>
+            <div className = {styles.title}>
                         {items.title}
-                </div>
+            </div>
             <img src = {items.imgUrl} className = {styles.img} alt = "imgUrl"></img>
             <div className={styles.texts}>
                 <div className = {styles.content}>
