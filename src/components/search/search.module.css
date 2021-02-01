@@ -1,7 +1,11 @@
+.search{
+  margin-left : 10%;
+}
+
 .input {
   display: flex;
-  width: 40em;
-  height: 2.5em;
+  width: 500px;
+  height: 40px;
   justify-content: center;
   border: 1px solid lightgray;
   background-color: white;
@@ -16,7 +20,7 @@
 }
 
 .btn {
-  width: 4em;
+  width: 4rem;
   border: none;
   background-color: white;
   outline: none;

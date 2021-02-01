@@ -7,9 +7,9 @@ const Item = ({content}) => {
     const history = useHistory();
 
     const goView = () =>{
+        localStorage.setItem("data",JSON.stringify(content));
         history.push({
             pathname : '/viewContent',
-            state : {content : content},
         });
     }
 
@@ -18,7 +18,6 @@ const Item = ({content}) => {
         <img src = {content.imgUrl} className = {styles.img} alt = "게시물사진"></img>
         <div className = {styles.title}>{content.title}</div>
         <div className = {styles.price}>{content.price}</div>
-        <div className = {styles.address}>{content.address}</div>
     </div>     
     );
 };

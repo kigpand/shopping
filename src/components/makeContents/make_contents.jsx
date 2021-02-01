@@ -3,10 +3,13 @@ import { useHistory } from 'react-router-dom';
 import ImgUpload from '../../service/img_upload';
 import styles from './make_contents.module.css';
 import NOIMG from '../../img/no_img.png';
+import PLUS from '../../img/plus.png';
 
 const MakeContents = ({id, nickName, shopService}) => {
 
     const history = useHistory();
+
+    const imgRef = useRef();
     const titleRef = useRef();
     const infoRef = useRef();
     const priceRef = useRef();
@@ -22,6 +25,10 @@ const MakeContents = ({id, nickName, shopService}) => {
         setUploadUrl(upload.url);
         alert("이미지 등록이 완료되었습니다.");
         setLoading(false);
+    }
+
+    const onBtnClick = () =>{
+        imgRef.current.click();
     }
 
     const pushClick = () =>{
@@ -51,16 +58,29 @@ const MakeContents = ({id, nickName, shopService}) => {
 
     return(
         <div className = {styles.bg}>
-            <h1 className = {styles.sub}>게시글 작성</h1>
+            <div className = {styles.sub}>게시글 작성</div>
+            <div className={styles.imgs}>
+                <div className = {styles.inputImg}>
+                    <label className = {styles.label}>이미지 업로드</label>
+                    <input ref = {imgRef} type = "file" accept = "image/*" className = {styles.img} onChange = {onChange}></input>
+                    <button className = {styles.inputBtn} onClick = {onBtnClick}><img className ={styles.plus} src = {PLUS} alt = "플러스"/></button>
+                </div>
+                <div className={styles.viewImg}>
+                    <label className = {styles.label}>업로드된 이미지 보기</label>
+                    <img src={uploadUrl} className={styles.view} alt ="뷰이미지" />
+                </div>
+            </div>
+            <label className = {styles.label}>Title</label>
             <input type = "text" className = {styles.title} ref = {titleRef} placeholder = "제목..."/>
+            <label className = {styles.label}>Price</label>
             <input type = "text" className = {styles.price} ref = {priceRef} placeholder = "가격..."></input>
+            <label className = {styles.label}>Address</label>
             <input type = "text" className = {styles.address} ref = {addressRef} placeholder = "주소..."></input>
-            <input type = "file" accept = "image/*" className = {styles.img} onChange = {onChange}></input>
+            <label className = {styles.label}>Description</label>
             <textarea name="info" className = {styles.info} cols="30" rows="10" ref = {infoRef} placeholder = "내용..."></textarea>
             <div className = {styles.btns}>
                 {loading && 
                     <div className = {styles.loading}>
-                        <div className = {styles.loading_text}>이미지 업로드 중...</div>
                         <div className = {styles.spinner}></div>
                     </div>
                 }

@@ -1,23 +1,25 @@
 .logout {
-  margin-left: 10em;
+  margin-left: 300px;
   display: flex;
+  align-items: center;
+  color:gray;
+  font-weight: bold;
 }
 
 .text {
-  font-size: 0.8em;
   margin-right: 1em;
 }
 
+.btns{
+  margin-left: 5rem;
+  display: flex;
+  font-size: 0.8rem;
+}
+
 .btn {
-  position: relative;
-  top:0.5em;
-  font-size:0.5em;
   margin-right: 1rem;
-  padding: 0.5rem;
-  border : 1px solid black;
-  border-radius: 4px;
+  position: relative;
   cursor: pointer;
-  transition: all 100ms ease-in-out;
 }
 
 .btn:hover {

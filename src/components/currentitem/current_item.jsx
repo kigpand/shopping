@@ -5,6 +5,7 @@ import styles from './current_item.module.css';
 const CurrentItem = ({shopService}) => {
 
     const [contents,setContent] = useState({});
+    const [viewNum,setViewNum] = useState(-9);
 
     useEffect(() =>{
         const stopSync = shopService.makeCurrentContents(datas =>{

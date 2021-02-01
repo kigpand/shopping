@@ -20,8 +20,10 @@ const Logout = ({saveUserInfo,authService,nickName,login_state}) => {
     return(
         <div className = {styles.logout}>
             <div className = {styles.text}>{nickName}님 환영합니다!</div>
-            <div className = {styles.btn} onClick = {makeContent}>게시글 쓰기</div>
-            <div className = {styles.btn} onClick = {logout}>로그아웃</div>
+            <div className={styles.btns}>
+                <div className = {styles.btn} onClick = {makeContent}>게시글 쓰기</div>
+                <div className = {styles.btn} onClick = {logout}>로그아웃</div>
+            </div>
         </div>
     );
 };

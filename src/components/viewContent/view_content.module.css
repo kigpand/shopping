@@ -1,6 +1,6 @@
 .viewContent {
   width: 100%;
-  margin-top: 5em;
+  margin-top: 8rem;
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
@@ -9,11 +9,13 @@
 }
 
 .img {
-  width: 40%;
-  height: 30em;
-  background-color: pink;
-  margin: 1.5em;
-  border-radius: 20px;
+  width: 600px;
+  height: 400px;
+}
+
+.texts{
+  margin-top: 1rem;
+  width: 600px;
 }
 
 .line{
@@ -23,32 +25,23 @@
   margin-bottom:1rem;
 }
 
-.user,
-.content {
-  width: 40%;
-}
-
-.user {
-  margin: 1.5em;
-}
-
 .nickName {
-  font-size: 1.2em;
   font-weight: bold;
 }
 
 .address {
-  font-size: 0.8em;
+  color:gray;
+  font-size: 0.8rem;
 }
 
 .title {
-  font-size: 1.5em;
-  border-radius: 4px;
+  font-size: 1.5rem;
   font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
 .price {
-  font-size: 1.2em;
+  font-size: 0.8rem;
   font-weight: bold;
   color: orange;
   margin-bottom: 2em;
@@ -61,7 +54,6 @@
 .renew{
   display: flex;
   position: relative;
-  left:15rem;
   margin-bottom: 2rem;
 }
 

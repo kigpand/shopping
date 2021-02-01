@@ -7,8 +7,6 @@ const Home = ({shopService}) => {
     return(
         <div>
             <div className = {styles.home}>
-                <div className = {styles.tag}>
-                </div>
             </div>
             <CurrentItem shopService = {shopService}/>
         </div>

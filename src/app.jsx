@@ -38,7 +38,6 @@ function App({authService,shopService}) {
             </Route>
          </Switch>
      </HashRouter>
-      <Footer />
    </div>
   );
 }

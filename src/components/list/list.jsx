@@ -6,9 +6,10 @@ const List = ({content}) => {
     const history = useHistory();
 
     const goView = () =>{
+        localStorage.setItem("data",JSON.stringify(content));
+
         history.push({
             pathname : '/viewContent',
-            state : {content : content},
         });
     }
     return(

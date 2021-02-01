@@ -1,43 +1,49 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import styles from './view_content.module.css';
 
 const ViewContent = ({id,shopService}) => {
-    const location = useLocation();
+
+    const [items,setItems] = useState({});
+
+    useEffect(()=>{
+        const item = JSON.parse(localStorage.getItem("data"));
+        setItems(item);
+    },[]);
 
     const deleteItem =() =>{
-        shopService.DeleteContents(location.state.content.content_num);
+        shopService.DeleteContents(items.content_num);
     }
 
     return(
-        <div className = {styles.viewContent}>
-            <img src = {location.state.content.imgUrl} className = {styles.img} alt = "imgUrl"></img>
-            <div className = {styles.user}>
-                <div className = {styles.nickName}>
-                    {location.state.content.nickName}
+          <div className = {styles.viewContent}>
+              <div className = {styles.title}>
+                        {items.title}
                 </div>
-                <div className = {styles.address}>
-                    {location.state.content.address}
-                </div>
-            </div>
-            <div className={styles.line}></div>
-            <div className = {styles.content}>
-                <div className = {styles.title}>
-                    {location.state.content.title}
-                </div>
-                <div className = {styles.price}>
-                    {location.state.content.price}
-                </div>
-                <div className = {styles.info}>
-                    {location.state.content.info}
-                </div>
-            </div>
-            <div className={styles.line}></div>
-                {id ===location.state.content.user_id && 
-                    <div className = {styles.renew}>
-                        <button className = {styles.delete} onClick = {deleteItem}>삭제</button>
+            <img src = {items.imgUrl} className = {styles.img} alt = "imgUrl"></img>
+            <div className={styles.texts}>
+                <div className = {styles.content}>
+                    <div className = {styles.user}>
+                    <div className = {styles.nickName}>
+                        판매자 : {items.nickName}
                     </div>
-                }
+                    <div className = {styles.address}>
+                        거래지역 : {items.address}
+                    </div>
+                </div>
+                    <div className = {styles.price}>
+                        가격 : {items.price}원
+                    </div>
+                    <div className = {styles.info}>
+                        {items.info}
+                    </div>
+                </div>
+                <div className={styles.line}></div>
+                    {id ===items.user_id && 
+                        <div className = {styles.renew}>
+                            <button className = {styles.delete} onClick = {deleteItem}>삭제</button>
+                        </div>
+                    }
+            </div>
         </div>
     );
 };
