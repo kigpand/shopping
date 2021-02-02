@@ -1,7 +1,5 @@
 ## 간단한 중고거래 사이트
 
-<img src = "https://user-images.githubusercontent.com/70279943/103325323-afca1500-4a8e-11eb-92eb-4d02e7d64120.PNG" width = "500px"> 
-
 ### 기능 
 
 * 구글을 통한 로그인 기능(Firebase 제공 API 활용)
