@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import LoginBtn from '../login_btn/login_btn';
+import LoginBtn from '../login_btn/loginBtn';
 import Logout from '../logout/logout';
 import styles from './login.module.css';
 

@@ -6,15 +6,15 @@ import Contents from './components/contents/contents';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Home from './components/home/home';
-import MakeContents from './components/makeContents/make_contents';
-import ViewContent from './components/viewContent/view_content';
+import MakeContents from './components/makeContents/makeContents';
+import ViewContent from './components/viewContent/viewContent';
 
 function App({authService,shopService}) {
 
-  const [id,setId] = useState("");
-  const [nickName,setNickName] = useState("");
-  const [searchData,setSearchData] = useState(false);
-  const [array,setArray] = useState([]);
+  const [id, setId] = useState("");
+  const [nickName, setNickName] = useState("");
+  const [searchData, setSearchData] = useState(false);
+  const [array, setArray] = useState([]);
 
   const getUser = (id,nickName) =>{
       setId(id);

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Item from '../item/item';
-import styles from './current_item.module.css';
+import styles from './currentItem.module.css';
 
 const CurrentItem = ({shopService}) => {
 
     const [contents,setContent] = useState({});
-    const [viewNum,setViewNum] = useState(-9);
 
     useEffect(() =>{
         const stopSync = shopService.makeCurrentContents(datas =>{
@@ -23,7 +22,7 @@ const CurrentItem = ({shopService}) => {
                         return <Item key = {contents[key].content_num} content = {contents[key]}/>;
                     }
                     else{
-                        return;
+                        return null;
                     }
                 })}
             </div>

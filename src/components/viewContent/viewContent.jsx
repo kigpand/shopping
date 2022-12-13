@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './view_content.module.css';
+import styles from './viewContent.module.css';
 
 const ViewContent = ({id,shopService}) => {
 

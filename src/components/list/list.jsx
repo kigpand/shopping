@@ -12,6 +12,7 @@ const List = ({content}) => {
             pathname : '/viewContent',
         });
     }
+    
     return(
         <div className = {styles.list} onClick = {goView}>
             <img src = {content.imgUrl} className = {styles.img} alt = "listImg"></img>

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ImgUpload from '../../service/img_upload';
-import styles from './make_contents.module.css';
+import styles from './makeContents.module.css';
 import NOIMG from '../../img/no_img.png';
 import PLUS from '../../img/plus.png';
 

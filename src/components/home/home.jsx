@@ -1,5 +1,5 @@
 import React from 'react';
-import CurrentItem from '../currentitem/current_item';
+import CurrentItem from '../currentitem/currentItem';
 import styles from './home.module.css';
 
 const Home = ({shopService}) => {
