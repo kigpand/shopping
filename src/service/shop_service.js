@@ -1,7 +1,7 @@
 
 import firebaseApp from './firebase';
 
-class  ShopService{
+class ShopService{
     pushData(id,nickName,title,imgUrl,info,price,address){
         const base = firebaseApp.database();
         base.ref('lists/').push({

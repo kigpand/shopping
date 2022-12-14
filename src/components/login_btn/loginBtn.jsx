@@ -1,14 +1,19 @@
 import React from 'react';
+import AuthService from '../../service/auth_service';
+import useMainStore from '../../store/mainStore';
 import styles from './loginBtn.module.css';
 
-const LoginBtn = ({saveUserInfo,authService,login_state}) => {
+const LoginBtn = () => {
+
+    const authService = new AuthService();
+    const { changeId, changeNickName } = useMainStore();
 
     const onLogin = () =>{
         let name = "Google";
         authService.login(name)
         .then(data =>{
-         saveUserInfo(data.user.uid,data.user.displayName);
-         login_state(true);
+            changeId(data.user.uid);
+            changeNickName(data.user.displayName);
         });
     };
 

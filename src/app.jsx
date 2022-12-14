@@ -1,44 +1,36 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import styles from './app.module.css';
 import Contents from './components/contents/contents';
-import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Home from './components/home/home';
 import MakeContents from './components/makeContents/makeContents';
 import ViewContent from './components/viewContent/viewContent';
+import useDataStore from './store/dataStore';
 
-function App({authService,shopService}) {
+function App() {
 
-  const [id, setId] = useState("");
-  const [nickName, setNickName] = useState("");
-  const [searchData, setSearchData] = useState(false);
-  const [array, setArray] = useState([]);
-
-  const getUser = (id,nickName) =>{
-      setId(id);
-      setNickName(nickName);
-  }
+  const { searchList } = useDataStore();
   
-  return (
-   <div className = {styles.app} >
-      <HashRouter>
-         <Header getUser = {getUser} authService={authService} id = {id} nickName = {nickName} shopService = {shopService} setSearchData = {setSearchData} setArray = {setArray}/>
-         <Switch>
-            <Route path = "/" exact>
-              {!searchData && <Home shopService = {shopService}/>}
-              {searchData && <Contents array = {array}/>}
-            </Route>
-            <Route path = "/makeContents">
-              <MakeContents id = {id} nickName = {nickName} shopService = {shopService}/>
-            </Route>
-            <Route path = "/viewContent">
-              <ViewContent id = {id} shopService = {shopService}/>
-            </Route>
-         </Switch>
-     </HashRouter>
-   </div>
+  return(
+    <div className = {styles.app} >
+        <HashRouter>
+            <Header />
+            <Switch>
+              <Route path = "/" exact>
+                {searchList.length === 0 && <Home />}
+                {searchList.length > 0 && <Contents />}
+              </Route>
+              <Route path = "/makeContents">
+                <MakeContents />
+              </Route>
+              <Route path = "/viewContent">
+                <ViewContent />
+              </Route>
+            </Switch>
+        </HashRouter>
+    </div>
   );
 }
 

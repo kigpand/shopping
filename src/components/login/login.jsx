@@ -1,35 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import AuthService from '../../service/auth_service';
+import useMainStore from '../../store/mainStore';
 import LoginBtn from '../login_btn/loginBtn';
 import Logout from '../logout/logout';
 import styles from './login.module.css';
 
-const Login = ({getUser,authService,nickName}) => {
+const Login = () => {
 
-    const [logining,setLogining] = useState(false);
+    const authService = new AuthService();
+    const { id, changeId, changeNickName } = useMainStore();
 
-
-    const login_state = (state) =>{
-        setLogining(state);
+    function saveUserInfo(id, nick) {
+        changeId(id);
+        changeNickName(nick);
     }
-
-    const saveUserInfo = (id,nickName) =>{
-        getUser(id,nickName);
-    };
 
     useEffect(()=>{
         authService.onAuthChange(user =>{
             if(user){
                 saveUserInfo(user.uid,user.displayName);
-                setLogining(true);
-            };
-            {!user && saveUserInfo("","")};
+            } else {
+                saveUserInfo(null,null)
+            }
         })
-    })
+    }, []);
 
     return(
         <div className = {styles.login}>
-           {!logining && <LoginBtn authService = {authService} saveUserInfo = {saveUserInfo} login_state = {login_state}/>}
-           {logining && <Logout authService = {authService} saveUserInfo = {saveUserInfo} nickName = {nickName} login_state = {login_state}/>}
+            {!id && <LoginBtn />}
+            {id && <Logout />}
         </div>
     );
 };

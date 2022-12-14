@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import ShopService from '../../service/shop_service';
 import Item from '../item/item';
 import styles from './currentItem.module.css';
 
-const CurrentItem = ({shopService}) => {
+const CurrentItem = () => {
 
     const [contents,setContent] = useState({});
+    const shopService = new ShopService();
 
     useEffect(() =>{
         const stopSync = shopService.makeCurrentContents(datas =>{

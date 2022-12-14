@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import ShopService from '../../service/shop_service';
+import useMainStore from '../../store/mainStore';
 import styles from './viewContent.module.css';
 
-const ViewContent = ({id,shopService}) => {
+const ViewContent = () => {
 
+    const { id } = useMainStore();
     const [items,setItems] = useState({});
+    const shopService = new ShopService();
 
     useEffect(()=>{
         const item = JSON.parse(localStorage.getItem("data"));
@@ -16,9 +20,7 @@ const ViewContent = ({id,shopService}) => {
 
     return(
           <div className = {styles.viewContent}>
-            <div className = {styles.title}>
-                        {items.title}
-            </div>
+            <div className = {styles.title}>{items.title}</div>
             <img src = {items.imgUrl} className = {styles.img} alt = "imgUrl"></img>
             <div className={styles.texts}>
                 <div className = {styles.content}>

@@ -1,20 +1,23 @@
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import useDataStore from '../../store/dataStore';
 import styles from './search.module.css';
+import ShopService from '../../service/shop_service';
 
-const Search = ({shopService, setSearchData, setArray}) => {
+const Search = () => {
     const inputRef = useRef()
     const history = useHistory();
+    const { changeSearchList } = useDataStore();
+    const shopService = new ShopService();
 
     const Click = ()=>{
         if(inputRef.current.value===""){
-            setSearchData(false);
+            changeSearchList([]);
             return;
         }
         else{
             const array = shopService.SearchContents(inputRef.current.value);
-            setArray(array);
-            setSearchData(true);
+            changeSearchList(array);
             inputRef.current.value = "";
             history.push("/");
         }
@@ -23,13 +26,12 @@ const Search = ({shopService, setSearchData, setArray}) => {
     const EnterKeyDown = () =>{
         if(window.event.keyCode === 13){
             if(inputRef.current.value===""){
-                setSearchData(false);
+                changeSearchList([]);
                 return;
             }
             else{
                 const array = shopService.SearchContents(inputRef.current.value);
-                setArray(array);
-                setSearchData(true);
+                changeSearchList(array);
                 inputRef.current.value = "";
                 history.push("/");
             }

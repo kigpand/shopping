@@ -1,15 +1,19 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import AuthService from '../../service/auth_service';
+import useMainStore from '../../store/mainStore';
 import styles from './logout.module.css';
 
-const Logout = ({saveUserInfo,authService,nickName,login_state}) => {
+const Logout = () => {
 
     const history = useHistory();
+    const authService = new AuthService();
+    const { nickName, changeId, changeNickName} = useMainStore();
 
     const logout = () =>{
         authService.logout();
-        saveUserInfo("","");
-        login_state(false);
+        changeId(null);
+        changeNickName(null);
         history.push("./");
     }
 

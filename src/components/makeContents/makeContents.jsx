@@ -4,16 +4,20 @@ import ImgUpload from '../../service/img_upload';
 import styles from './makeContents.module.css';
 import NOIMG from '../../img/no_img.png';
 import PLUS from '../../img/plus.png';
+import ShopService from '../../service/shop_service';
+import useMainStore from '../../store/mainStore';
 
-const MakeContents = ({id, nickName, shopService}) => {
+const MakeContents = () => {
 
     const history = useHistory();
+    const { id, nickName } = useMainStore();
 
     const imgRef = useRef();
     const titleRef = useRef();
     const infoRef = useRef();
     const priceRef = useRef();
     const addressRef = useRef();
+    const shopService = new ShopService();
 
     const [uploadUrl,setUploadUrl] = useState(NOIMG);
     const [loading,setLoading] = useState(false);
