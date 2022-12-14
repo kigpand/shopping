@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ShopService from '../../service/shop_service';
 import Item from '../item/item';
-import styles from './currentItem.module.css';
+import styles from './currentItem.module.scss';
 
 const CurrentItem = () => {
 
@@ -13,6 +13,8 @@ const CurrentItem = () => {
             setContent(datas);
         });
         return () =>{ stopSync();}
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     return(

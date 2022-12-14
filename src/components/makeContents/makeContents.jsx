@@ -77,7 +77,7 @@ const MakeContents = () => {
             <label className = {styles.label}>Title</label>
             <input type = "text" className = {styles.title} ref = {titleRef} placeholder = "제목..."/>
             <label className = {styles.label}>Price</label>
-            <input type = "text" className = {styles.price} ref = {priceRef} placeholder = "가격..."></input>
+            <input type = "number" className = {styles.price} ref = {priceRef} placeholder = "가격..."></input>
             <label className = {styles.label}>Address</label>
             <input type = "text" className = {styles.address} ref = {addressRef} placeholder = "주소..."></input>
             <label className = {styles.label}>Description</label>

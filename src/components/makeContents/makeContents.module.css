@@ -92,6 +92,12 @@
   font-size: 1rem;
 }
 
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
 .btns {
   margin: 1em;
   display: flex;

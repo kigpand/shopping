@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ShopService from '../../service/shop_service';
 import useMainStore from '../../store/mainStore';
-import styles from './viewContent.module.css';
+import styles from './viewContent.module.scss';
 
 const ViewContent = () => {
 
@@ -20,8 +20,8 @@ const ViewContent = () => {
 
     return(
           <div className = {styles.viewContent}>
-            <div className = {styles.title}>{items.title}</div>
             <img src = {items.imgUrl} className = {styles.img} alt = "imgUrl"></img>
+            <div className = {styles.title}>{items.title}</div>
             <div className={styles.texts}>
                 <div className = {styles.content}>
                     <div className = {styles.user}>

@@ -1,5 +1,4 @@
 
-import { useEffect, useState } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import styles from './app.module.css';
 import Contents from './components/contents/contents';

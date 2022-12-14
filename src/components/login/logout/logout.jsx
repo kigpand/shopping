@@ -1,8 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import AuthService from '../../service/auth_service';
-import useMainStore from '../../store/mainStore';
-import styles from './logout.module.css';
+import AuthService from '../../../service/auth_service';
+import useMainStore from '../../../store/mainStore';
+import styles from './logout.module.scss';
+import LOGOUT from '../../../img/logout.png';
+import CONTENT from '../../../img/content.png';
 
 const Logout = () => {
 
@@ -23,10 +25,9 @@ const Logout = () => {
 
     return(
         <div className = {styles.logout}>
-            <div className = {styles.text}>{nickName}님 환영합니다!</div>
             <div className={styles.btns}>
-                <div className = {styles.btn} onClick = {makeContent}>게시글 쓰기</div>
-                <div className = {styles.btn} onClick = {logout}>로그아웃</div>
+                <img src={CONTENT} alt='콘텐트' className={styles.img} onClick = {makeContent}></img>
+                <img src={LOGOUT} alt='로그아웃' className={styles.img} onClick = {logout}></img>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
-import AuthService from '../../service/auth_service';
-import useMainStore from '../../store/mainStore';
-import styles from './loginBtn.module.css';
+import AuthService from '../../../service/auth_service';
+import useMainStore from '../../../store/mainStore';
+import styles from './loginBtn.module.scss';
 
 const LoginBtn = () => {
 
@@ -18,7 +18,7 @@ const LoginBtn = () => {
     };
 
     return(
-        <div className = {styles.btn} onClick = {onLogin}>Google 로그인</div>
+        <div className = {styles.btn} onClick = {onLogin}>로그인</div>
     );
 };
 

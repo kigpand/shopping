@@ -1,13 +1,11 @@
 import React from 'react';
 import CurrentItem from '../currentitem/currentItem';
-import styles from './home.module.css';
+import styles from './home.module.scss';
 
 const Home = () => {
 
     return(
-        <div>
-            <div className = {styles.home}>
-            </div>
+        <div className={styles.home}>
             <CurrentItem />
         </div>
     );
