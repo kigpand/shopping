@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ImgUpload from '../../service/img_upload';
-import styles from './makeContents.module.css';
+import styles from './makeContents.module.scss';
 import NOIMG from '../../img/no_img.png';
 import PLUS from '../../img/plus.png';
 import ShopService from '../../service/shop_service';
 import useMainStore from '../../store/mainStore';
 import useDataStore from '../../store/dataStore';
+import { useInput } from '../../hooks/useInput';
 
 const MakeContents = () => {
 
@@ -14,10 +15,10 @@ const MakeContents = () => {
     const { id, nickName } = useMainStore();
 
     const imgRef = useRef();
-    const titleRef = useRef();
-    const infoRef = useRef();
-    const priceRef = useRef();
-    const addressRef = useRef();
+    const infoInput = useInput('');
+    const priceInput = useInput('');
+    const addressInput = useInput('');
+    const titleInput = useInput('');
     const shopService = new ShopService();
 
     const [uploadUrl,setUploadUrl] = useState(NOIMG);
@@ -37,22 +38,18 @@ const MakeContents = () => {
     }
 
     const pushClick = () =>{
-        if(!titleRef.current.value || !infoRef.current.value || !priceRef.current.value || !addressRef.current.value){
+        if(!titleInput.value || !infoInput.value || !priceInput.value || !addressInput.value){
             alert("내용을 채워주세요!");
             return;
         }
         else{
-            const title = titleRef.current.value;
+            const title = titleInput.value;
             const imgUrl = uploadUrl;
-            const info = infoRef.current.value;
-            const price = priceRef.current.value;
-            const address = addressRef.current.value;
+            const info = infoInput.value;
+            const price = priceInput.value;
+            const address = addressInput.value;
 
             shopService.pushData(id,nickName,title,imgUrl,info,price,address);
-            titleRef.current.value = "";
-            infoRef.current.value = "";
-            priceRef.current.value = "";
-            addressRef.current.value = "";
             history.push('/');
         }
     }
@@ -76,13 +73,13 @@ const MakeContents = () => {
                 </div>
             </div>
             <label className = {styles.label}>Title</label>
-            <input type = "text" className = {styles.title} ref = {titleRef} placeholder = "제목..."/>
+            <input type = "text" className = {styles.title} placeholder = "제목..." {...titleInput} />
             <label className = {styles.label}>Price</label>
-            <input type = "number" className = {styles.price} ref = {priceRef} placeholder = "가격..."></input>
+            <input type = "number" className = {styles.price} placeholder = "가격..." {...priceInput}></input>
             <label className = {styles.label}>Address</label>
-            <input type = "text" className = {styles.address} ref = {addressRef} placeholder = "주소..."></input>
+            <input type = "text" className = {styles.address} placeholder = "주소..." {...addressInput}></input>
             <label className = {styles.label}>Description</label>
-            <textarea name="info" className = {styles.info} cols="30" rows="10" ref = {infoRef} placeholder = "내용..."></textarea>
+            <textarea name="info" className = {styles.info} cols="30" rows="10" placeholder = "내용..." {...infoInput}></textarea>
             <div className = {styles.btns}>
                 <button className = {styles.pushbtn} onClick = {pushClick}>작성 완료</button>
                 <button className = {styles.canclebtn} onClick = {returnToHome}>취소</button>
