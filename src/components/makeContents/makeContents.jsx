@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ImgUpload from '../../service/img_upload';
 import styles from './makeContents.module.css';
@@ -6,6 +6,7 @@ import NOIMG from '../../img/no_img.png';
 import PLUS from '../../img/plus.png';
 import ShopService from '../../service/shop_service';
 import useMainStore from '../../store/mainStore';
+import useDataStore from '../../store/dataStore';
 
 const MakeContents = () => {
 
@@ -20,15 +21,15 @@ const MakeContents = () => {
     const shopService = new ShopService();
 
     const [uploadUrl,setUploadUrl] = useState(NOIMG);
-    const [loading,setLoading] = useState(false);
+    const { changeLoading } = useDataStore();
     const imgUpload = new ImgUpload();
 
     const onChange = async (event) =>{
-        setLoading(true);
+        changeLoading(true);
         const upload = await imgUpload.upload(event.target.files[0]);
         setUploadUrl(upload.url);
         alert("이미지 등록이 완료되었습니다.");
-        setLoading(false);
+        changeLoading(false);
     }
 
     const onBtnClick = () =>{
@@ -83,12 +84,7 @@ const MakeContents = () => {
             <label className = {styles.label}>Description</label>
             <textarea name="info" className = {styles.info} cols="30" rows="10" ref = {infoRef} placeholder = "내용..."></textarea>
             <div className = {styles.btns}>
-                {loading && 
-                    <div className = {styles.loading}>
-                        <div className = {styles.spinner}></div>
-                    </div>
-                }
-                {!loading && <button className = {styles.pushbtn} onClick = {pushClick}>작성 완료</button>}
+                <button className = {styles.pushbtn} onClick = {pushClick}>작성 완료</button>
                 <button className = {styles.canclebtn} onClick = {returnToHome}>취소</button>
             </div>
         </div>
