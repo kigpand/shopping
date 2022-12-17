@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Login from '../login/login';
 import Search from './search';
 import styles from './header.module.scss';
@@ -8,12 +8,12 @@ import useDataStore from '../../store/dataStore';
 
 const Header = () => {
     
-    const history = useHistory();
+    const nav = useNavigate();
     const { changeSearchList } = useDataStore();
     
     const reHome = () =>{
         changeSearchList([]);
-        history.push("/");
+        nav('/');
     }
 
     return( 
@@ -31,6 +31,6 @@ const Header = () => {
             </div>
         </section>
     );
-    };
- 
+};
+
 export default Header;

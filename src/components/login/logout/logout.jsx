@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthService from '../../../service/auth_service';
 import useMainStore from '../../../store/mainStore';
 import styles from './logout.module.scss';
@@ -8,19 +8,19 @@ import CONTENT from '../../../img/content.png';
 
 const Logout = () => {
 
-    const history = useHistory();
+    const nav = useNavigate();
     const authService = new AuthService();
-    const { nickName, changeId, changeNickName} = useMainStore();
+    const { changeId, changeNickName} = useMainStore();
 
     const logout = () =>{
         authService.logout();
         changeId(null);
         changeNickName(null);
-        history.push("./");
+        nav("/");
     }
 
     const makeContent = () =>{
-        history.push("./makeContents");
+        nav("/makeContents");
     }
 
     return(

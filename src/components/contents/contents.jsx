@@ -1,7 +1,7 @@
 import React from 'react';
 import useDataStore from '../../store/dataStore';
 import List from '../list/list';
-import styles from './contents.module.css';
+import styles from './contents.module.scss';
 
 const Contents = () =>{
 

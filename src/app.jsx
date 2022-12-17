@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import styles from './app.module.css';
 import Contents from './components/contents/contents';
 import Header from './components/header/header';
@@ -24,21 +24,12 @@ function App() {
   
   return(
     <div className = {styles.app} >
-        <HashRouter>
             <Header />
-            <Switch>
-              <Route path = "/" exact>
-                {searchList.length === 0 && <Home />}
-                {searchList.length > 0 && <Contents />}
-              </Route>
-              <Route path = "/makeContents">
-                <MakeContents />
-              </Route>
-              <Route path = "/viewContent">
-                <ViewContent />
-              </Route>
-            </Switch>
-        </HashRouter>
+            <Routes>
+              <Route path = "/" element={searchList.length === 0 ? <Home /> : <Contents />} exact></Route>
+              <Route path = "/makeContents" element={<MakeContents />}></Route>
+              <Route path = "/viewContent" element={<ViewContent />}></Route>
+            </Routes>
         { loading && <LoadingSpinner />}
     </div>
   );

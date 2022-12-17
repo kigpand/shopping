@@ -1,16 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import styles from './list.module.css';
+import { useNavigate } from 'react-router-dom';
+import styles from './list.module.scss';
 
 const List = ({content}) => {
-    const history = useHistory();
+    const nav = useNavigate();
 
     const goView = () =>{
         localStorage.setItem("data",JSON.stringify(content));
 
-        history.push({
-            pathname : '/viewContent',
-        });
+        nav('/viewContent');
     }
     
     return(
