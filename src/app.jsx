@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import styles from './app.module.css';
+import AllContents from './components/allContents/AllContents';
 import Contents from './components/contents/contents';
 import Header from './components/header/header';
 import Home from './components/home/home';
@@ -29,6 +30,7 @@ function App() {
               <Route path = "/" element={searchList.length === 0 ? <Home /> : <Contents />} exact></Route>
               <Route path = "/makeContents" element={<MakeContents />}></Route>
               <Route path = "/viewContent" element={<ViewContent />}></Route>
+              <Route path = '/all' element={<AllContents />}></Route>
             </Routes>
         { loading && <LoadingSpinner />}
     </div>

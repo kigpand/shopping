@@ -7,7 +7,6 @@ const Contents = () =>{
 
     const { searchList } = useDataStore();
 
-
     return(
         <div className ={styles.contents}>
             <div className = {styles.main}>

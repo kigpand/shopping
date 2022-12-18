@@ -1,6 +1,7 @@
 .contents {
   background-color: lightgrey;
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,9 +10,10 @@
 .main {
   background-color: white;
   border-radius: 20px;
-  width: 55%;
-  height: 70vh;
-  margin: 10em 0 5em 0;
+  width: 90%;
+  height: 80%;
+  overflow-y: auto;
+  margin-top: 5%;
 }
 
 .list {
