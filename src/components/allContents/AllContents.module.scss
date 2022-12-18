@@ -21,6 +21,29 @@
         justify-items: center;
     }
 
+    .footer {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            font-size: 13px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 10px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+        }
+    }
+
     @include mobile {
         width: 100%;
 

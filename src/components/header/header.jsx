@@ -20,10 +20,6 @@ const Header = () => {
         <section className = {styles.header}>
             <div className={styles.headerContainer}>
                 <img className = {styles.logo} src = {LOGO_IMG} onClick = {reHome} alt = "로고"/>
-                {/* <div className={styles.category}>
-                    <div>중고장터</div>
-                    <div>내위치</div>
-                </div> */}
                 <div className={styles.headerItems}>
                     <Search />
                     <Login />
