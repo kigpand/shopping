@@ -1,13 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import useDataStore from '../../store/dataStore';
 import styles from './list.module.scss';
 
 const List = ({content}) => {
     const nav = useNavigate();
+    const { changeContentData } = useDataStore();
 
     const goView = () =>{
-        localStorage.setItem("data",JSON.stringify(content));
-
+        changeContentData(content);
         nav('/viewContent');
     }
     
