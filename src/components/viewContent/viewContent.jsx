@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ShopService from '../../service/shop_service';
 import useDataStore from '../../store/dataStore';
 import useMainStore from '../../store/mainStore';
+import ViewModal from '../viewModal/viewModal';
 import styles from './viewContent.module.scss';
 
 const ViewContent = () => {
@@ -9,9 +10,14 @@ const ViewContent = () => {
     const { id } = useMainStore();
     const shopService = new ShopService();
     const { contentData } = useDataStore();
+    const [onViewModel, setOnViewModal] = useState(false);
 
-    const deleteItem =() =>{
+    const deleteItem = () =>{
         shopService.DeleteContents(contentData.content_num);
+    }
+
+    const onCloseView = () => {
+        setOnViewModal(false);
     }
     
     return(
@@ -24,7 +30,7 @@ const ViewContent = () => {
                     <div className = {styles.nickName}>
                         판매자 : {contentData.nickName}
                     </div>
-                    <div className = {styles.address}>
+                    <div className = {styles.address} onClick={() => setOnViewModal(true)}>
                         거래지역 : {contentData.address}
                     </div>
                 </div>
@@ -42,6 +48,7 @@ const ViewContent = () => {
                         </div>
                     }
             </div>
+            { onViewModel && <ViewModal address={contentData.address} onCloseView={onCloseView} />}
         </div>
     );
 };

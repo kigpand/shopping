@@ -48,6 +48,11 @@
 .address {
   color:gray;
   font-size: 0.8rem;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
 
 .title {

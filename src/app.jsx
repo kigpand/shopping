@@ -13,7 +13,7 @@ import useDataStore from './store/dataStore';
 
 function App() {
 
-  const { searchList, loading } = useDataStore();
+  const { searchList, loading, changeLoading } = useDataStore();
 
   useEffect(() => {
     if (loading) {
@@ -22,6 +22,25 @@ function App() {
         document.body.style.overflowY = 'auto';
     }
 }, [loading]);
+
+  useEffect(() => {
+    changeLoading(true);
+    const mapScript = document.createElement('script');
+    mapScript.async = true;
+    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAOMAP_APPKEY}&libraries=services&autoload=false`;
+    document.head.appendChild(mapScript);
+
+    const onLoadKakaoMap = () => {
+      window.kakao.maps.load(() => {
+        changeLoading(false);
+      });
+    };
+    mapScript.addEventListener('load', onLoadKakaoMap);
+
+    return () => {
+      mapScript.removeEventListener('load', onLoadKakaoMap);
+    }
+  }, []);
   
   return(
     <div className = {styles.app} >
