@@ -10,6 +10,7 @@ const Item = ({content}) => {
 
     const goView = () =>{
         changeContentData(content);
+        sessionStorage.setItem('currentItem', JSON.stringify(content));
         nav('/viewContent');
     }
 
